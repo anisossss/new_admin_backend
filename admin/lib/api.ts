@@ -17,7 +17,7 @@ import type {
   WebsitePayload,
 } from './types';
 
-const API = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+const API = 'https://185.172.57.237.nip.io';
 
 export class ApiError extends Error {
   status: number;
