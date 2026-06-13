@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Palette « Newsroom Hub » */
+  --color-paper: #f7f5f2;
+  --color-card: #ffffff;
+  --color-shell: #191c1f;
+  --color-shell-raised: #22262b;
+  --color-ink: #23272c;
+  --color-muted: #6f747a;
+  --color-faint: #a9adb2;
+  --color-line: #e7e2da;
+  --color-terracotta: #d9622b;
+  --color-terracotta-deep: #bb4f1d;
+  --color-terracotta-soft: #f9e9df;
+  --color-success: #3d8b6a;
+  --color-success-soft: #e4f1eb;
+  --color-amber: #e0a51c;
+  --color-amber-deep: #9c7311;
+  --color-amber-soft: #f9f0d8;
+  --color-danger: #c23b2b;
+  --color-danger-deep: #a12d20;
+  --color-danger-soft: #f9e6e2;
+  --color-sky: #3b6ea5;
+  --color-sky-soft: #e4edf6;
+  /* Aperçu SERP Google */
+  --color-serp-link: #1a0dab;
+  --color-serp-url: #006621;
+  --color-serp-text: #4d5156;
+  /* Typographies (chargées via next/font dans app/layout.tsx) */
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-spline-mono);
+}
+
+::selection {
+  background: #f4d4c0;
+  color: #23272c;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #cfc9bf transparent;
+}
+
+body {
+  letter-spacing: -0.011em;
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-card shadow-[0_1px_2px_rgba(25,28,31,0.04),0_6px_18px_-12px_rgba(25,28,31,0.12)];
+  }
+
+  .field {
+    @apply w-full rounded-lg border border-line bg-card px-3 py-2 text-sm text-ink outline-none transition placeholder:text-faint focus:border-terracotta focus:ring-2 focus:ring-terracotta/25 disabled:opacity-60;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-bold transition outline-none focus-visible:ring-2 focus-visible:ring-terracotta/40 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-terracotta text-white shadow-sm hover:bg-terracotta-deep;
+  }
+
+  .btn-ghost {
+    @apply border border-line bg-card text-ink hover:bg-paper;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white hover:bg-danger-deep;
+  }
+
+  .rail-label {
+    @apply block text-[11px] font-bold uppercase tracking-[0.08em] text-muted;
+  }
+
+  .icon-btn {
+    @apply flex h-8 w-8 items-center justify-center rounded-md text-muted transition hover:bg-paper hover:text-ink disabled:pointer-events-none disabled:opacity-40;
+  }
+}
+
+/* ——— Zone d'édition Tiptap ——— */
+
+.tiptap {
+  min-height: 420px;
+  padding: 1.1rem 1.4rem 1.75rem;
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #23272c;
+  outline: none;
+  caret-color: #d9622b;
+}
+
+.tiptap > :first-child {
+  margin-top: 0;
+}
+
+.tiptap p {
+  margin: 0 0 0.9em;
+}
+
+.tiptap h2 {
+  margin: 1.5em 0 0.5em;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.tiptap h3 {
+  margin: 1.3em 0 0.4em;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.tiptap ul,
+.tiptap ol {
+  margin: 0 0 0.9em;
+  padding-left: 1.5rem;
+}
+
+.tiptap ul {
+  list-style: disc;
+}
+
+.tiptap ol {
+  list-style: decimal;
+}
+
+.tiptap li {
+  margin: 0.25em 0;
+}
+
+.tiptap li p {
+  margin: 0;
+}
+
+.tiptap blockquote {
+  margin: 1.2em 0;
+  border-left: 3px solid #d9622b;
+  background: #f7f5f2;
+  padding: 0.7em 1em;
+  border-radius: 0 0.5rem 0.5rem 0;
+  color: #565b61;
+  font-style: italic;
+}
+
+.tiptap blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.tiptap a {
+  color: #bb4f1d;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.tiptap mark {
+  background: #f9f0d8;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.tiptap code {
+  background: #f0ede8;
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+  font-size: 0.88em;
+}
+
+.tiptap pre {
+  background: #191c1f;
+  color: #e8e6e3;
+  border-radius: 0.6rem;
+  padding: 0.9em 1.1em;
+  margin: 0 0 1em;
+  overflow-x: auto;
+}
+
+.tiptap pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+.tiptap hr {
+  margin: 1.6em 0;
+  border: none;
+  border-top: 1px solid #e7e2da;
+}
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.6rem;
+  margin: 1em 0;
+}
+
+.tiptap img.ProseMirror-selectednode {
+  outline: 3px solid rgba(217, 98, 43, 0.55);
+}
+
+.tiptap div[data-youtube-video] {
+  margin: 1em 0;
+}
+
+.tiptap div[data-youtube-video] iframe {
+  max-width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid #e7e2da;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: #a9adb2;
+}
+
+/* ——— Animations ——— */
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-toast-in {
+  animation: toast-in 0.22s ease-out both;
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-pop-in {
+  animation: pop-in 0.18s ease-out both;
+}
+
+.ai-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.ai-dots span {
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: currentColor;
+  animation: ai-bounce 1s infinite ease-in-out;
+}
+
+.ai-dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.ai-dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes ai-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  40% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+
+.rail-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #d8d2c8 transparent;
+}
